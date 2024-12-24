@@ -1,0 +1,187 @@
+﻿<Page x:Class="quanlichannuoi.View.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:quanlichannuoi.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Quản lý chăn nuôi" Height="450" Width="800">
+    <Grid Background ="AliceBlue">
+        <!--   <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,266,-25" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" >
+            <Label Content="Tra cứu" FontSize="22" HorizontalContentAlignment="Center" Height="42" Width="222" HorizontalAlignment="Left" Background="Chartreuse" />
+            <Label Content="Cơ sở chăn nuôi" FontSize="22" Margin="0,11,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="56" Width="219" HorizontalAlignment="Left" Background="Chartreuse" />
+            <Label Content="Cơ sở chế biến" FontSize="22" Margin="0,11,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="56" Width="219" HorizontalAlignment="Left" Background="Chartreuse" />
+            <Label Content="Cơ sở sản xuất" FontSize="22" Margin="0,11,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="56" Width="219" HorizontalAlignment="Left" Background="Chartreuse" />
+            <Label Content="Chi cục thú y" FontSize="22" Margin="0,11,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="56" Width="219" HorizontalAlignment="Left" Background="Chartreuse" />
+
+        </StackPanel>
+        -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Background="#202020">
+            <Label Content="ROLE: ADMIN"
+           FontSize="20"
+           FontWeight="Bold"
+           Foreground="#E0E0E0"
+           VerticalAlignment="Center"/>
+        </Border>
+        <Border Grid.Row="0" Grid.Column="1" Background="#E0E0E0">
+            <Grid Height="60" VerticalAlignment="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Left">
+                    <!--<Button Content="Migrate" Padding="5" Margin="5" Background="Transparent" Click="Button_Click" BorderBrush="Transparent"/>
+<Button Content="Copy" x:Name="CopyButton" Padding="5" Margin="5" Background="Transparent" BorderBrush="Transparent" Click="CopyButton_Click"/>/-->
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+                    <!--<Button Content="Home" Padding="5" Margin="5" Background="Transparent" BorderBrush="Transparent"/>/-->
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right">
+                    <!--<Button Content="Home" Padding="5" Margin="5" Background="Transparent" BorderBrush="Transparent"/>/-->
+                </StackPanel>
+                <Button Content="Quản lý nhóm" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" Width="100" Height="35" FontWeight="Bold" Background="#deb887" Click="Button_Quanlinhom"/>
+                <Button Grid.Column="2" Content="Báo cáo tổng hợp" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="110" Height="35" Background="#deb887" Click="Button_baocaotonghop"/>
+
+            </Grid>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="0" Background="#404040">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <StackPanel>
+                        <Label FontSize="16"
+                       Content="Connect "
+                       Foreground="#808080"/>
+                        <!--<StackPanel>
+<Button Content="Accounts"
+                            x:Name="AccountsMenu"
+                            HorizontalContentAlignment="Left"
+                            Padding="3"
+                            Background="Transparent"
+                            BorderBrush="Transparent" Click="AccountsMenu_Click"/>
+<Button Content="Side Menu"
+                            HorizontalContentAlignment="Left"
+                            Padding="3"
+                            Background="Transparent"
+                            BorderBrush="Transparent"/>
+<Button Content="Side Menu"
+                            HorizontalContentAlignment="Left"
+                            Padding="3"
+                            Background="Transparent"
+                            BorderBrush="Transparent"/>
+<Button Content="Side Menu"
+                            HorizontalContentAlignment="Left"
+                            Padding="3"
+                            Background="Transparent"
+                            BorderBrush="Transparent"/>
+</StackPanel>
+<StackPanel>
+<Label FontSize="16"
+                           FontWeight="Bold"
+                           Content="Quan ly he thong"
+                           Foreground="#FFF"/>
+<StackPanel>
+<Button Content="Side Menu"
+                                HorizontalContentAlignment="Left"
+                                Padding="3"
+                                Background="Transparent"
+                                BorderBrush="Transparent"/>
+<Button Content="Side Menu"
+                                HorizontalContentAlignment="Left"
+                                Padding="3" 
+                                Background="Transparent"
+                                BorderBrush="Transparent"/>
+<Button Content="Side Menu"
+                                HorizontalContentAlignment="Left"
+                                Padding="3"
+                                Background="Transparent"/>
+<Button Content="Side Menu"
+                                HorizontalContentAlignment="Left"
+                                Padding="3"
+                                Background="Transparent"
+                                BorderBrush="Transparent"/>
+</StackPanel>
+</StackPanel>/-->
+                        <Button Content="Đơn vị cấp huyện" FontSize="22" HorizontalContentAlignment="Center" Height="42" Width="222" HorizontalAlignment="Left" Background="#bdb76b" Click="DonViCapHuyen_Click" />
+                        <Button Content="Đơn vị cấp xã" FontSize="22" Margin="0,11,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="56" Width="219" HorizontalAlignment="Left" Background="#bdb76b" Click="Button_Click" />
+                        <Button Content="DS người dùng" FontSize="22" Margin="0,11,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="56" Width="219" HorizontalAlignment="Left" Background="#bdb76b" Click="Button_Click_1" />
+                        <Button Content="Menu" FontSize="22" Margin="0,11,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="56" Width="219" HorizontalAlignment="Left" Background="#bdb76b" Click="Button_Click_2" />
+                        <Button Content="Thoát" FontSize="22" Margin="0,11,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="56" Width="219" HorizontalAlignment="Left" Background="#bdb76b" />
+
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="1" Background="#FFF" Name="MainContent">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="69*"/>
+                    <ColumnDefinition Width="283*"/>
+                    <ColumnDefinition Width="198*"/>
+                </Grid.ColumnDefinitions>
+                <ContentControl x:Name="HuyenPresenter" Grid.ColumnSpan="3" />
+                <ContentControl x:Name="XaPresenter" Grid.ColumnSpan="3" >
+                    <TextBox Name="hethongTextBox"  HorizontalAlignment="Left" Margin="-182,0,0,0" TextWrapping="Wrap" Background="AliceBlue" VerticalAlignment="Top" Width="153" Height="25"/>
+                </ContentControl>
+                <Button Content="Tìm Kiếm" Height="25" Width="60" Margin="-250,0,259,365" Click="Button_timkiemhethong" />
+                <ListView x:Name="NhomListView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Visibility="Collapsed">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID Nhóm" DisplayMemberBinding="{Binding Idnhom}" Width="100"/>
+                            <GridViewColumn Header="Tên Nhóm" DisplayMemberBinding="{Binding tennhom}" Width="200"/>
+                            <GridViewColumn Header="ID Trưởng Nhóm" DisplayMemberBinding="{Binding Idtruongnhom}" Width="150"/>
+                            <GridViewColumn Header="Quyền Hạn" DisplayMemberBinding="{Binding quyenhan}" Width="250"/>
+                            <GridViewColumn Header="Số Lượng Thành Viên" DisplayMemberBinding="{Binding soluongthanhvien}" Width="150"/>
+                            <GridViewColumn Header="Ngày Tạo Nhóm" DisplayMemberBinding="{Binding ngaytaonhom}" Width="200"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView x:Name="UserListView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Visibility="Collapsed">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="50"/>
+                            <GridViewColumn Header="Họ tên" DisplayMemberBinding="{Binding hoten}" Width="120"/>
+                            <GridViewColumn Header="Tên đăng nhập" DisplayMemberBinding="{Binding tendangnhap}" Width="120"/>
+                            <GridViewColumn Header="Email" DisplayMemberBinding="{Binding email}" Width="200"/>
+                            <GridViewColumn Header="Số điện thoại" DisplayMemberBinding="{Binding sodienthoai}" Width="120"/>
+                            <GridViewColumn Header="Quyền hạn" DisplayMemberBinding="{Binding quyenhan}" Width="80"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Border>
+        <Button Grid.Column="1" Content="Lịch Sử truy cập" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="35" FontWeight="Bold" Background="#deb887" Click="Button_lichsutrycap"/>
+
+    </Grid>
+</Page>

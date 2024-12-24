@@ -1,0 +1,299 @@
+﻿<Window x:Class="quanlichannuoi.View.WindowProcess"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"    
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:quanlichannuoi.View"
+        mc:Ignorable="d"
+        Name="_WindowProcess"
+        Title="Quản lí chăn nuôi" Height="450" Width="800">
+    <Window.Background>
+        <!-- Gradient background -->
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#FFB3E5FC" Offset="0.0"/>
+            <GradientStop Color="#FF81D4FA" Offset="1.0"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <TabControl Margin="10" Background="#FFF">
+            <!-- Tab 2.1: Sản phẩm xử lý chất thải chăn nuôi -->
+            <TabItem Header="Sản phẩm xử lý chất thải">
+                <StackPanel Margin="10">
+                    <Label Content="Chức năng quản lý sản phẩm xử lý chất thải chăn nuôi" 
+                           FontSize="16" FontWeight="Bold" Foreground="#0288D1" Margin="5"/>
+                    <WrapPanel>
+                        <Button Content=" Danh mục cơ sở sản xuất" 
+                                Background="#FF29B6F6" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_Click"/>
+                        <Button Content=" Tìm kiếm cơ sở sản xuất" 
+                                Background="#FF039BE5" Foreground="White" Width="200" Height="50" Click="Button_Timkiemcssx"/>
+                        <Button Content=" Danh mục cơ sở khảo nghiệm" 
+                                Background="#FF0288D1" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_Danhmuckhaonghiem"/>
+                        <Button Content="Tìm kiếm cơ sở khảo nghiệm" 
+                                Background="#FF0277BD" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_Timkiemkhaonghiem"/>
+                    </WrapPanel>
+                    <Grid Name="Search">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Search" Background="AliceBlue" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="SearchBox" TextAlignment="Center" Padding="0,5,0,0" Background="AntiqueWhite" HorizontalAlignment="Left" Width="200" Height="30"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="Thêm" FontWeight="Bold" Background="#ffb6c1" Width="100" Height="40" FontSize="15" Click="Button_Themchatthai"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="Xóa" FontWeight="Bold" Background="#ffb6c1" Width="100" Height="40" FontSize="15" Click="Button_Xoachatthai"/>
+                        <Button Grid.Row="0" Grid.Column="4" Content="Sửa" FontWeight="Bold" Background="#ffb6c1" Width="100" Height="40" FontSize="15" Click="Button_Suachatthai"/>
+                    </Grid>
+                    <ListView Name="ListViewcososanxuat" Margin="10,50,10,10" Visibility="Collapsed">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID cơ sở" DisplayMemberBinding="{Binding ID}" Width="70" />
+                                <GridViewColumn Header="Tên cơ sở" DisplayMemberBinding="{Binding Ten}" Width="280" />
+                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding Diachi}" Width="300"/>
+                                <GridViewColumn Header="Lượng chất thải (tấn)" DisplayMemberBinding="{Binding Luongchatthai}" Width="120" />
+                                <GridViewColumn Header="ID Xã" DisplayMemberBinding="{Binding IdXa}" Width="70" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Orientation="Vertical" Margin="10" Name="themchathai" Visibility="Collapsed" >
+                        <Button Content="Xong" FontWeight="Bold" Background="#5f9ea0" Width="50" Height="30" FontSize="15" HorizontalAlignment="Left" Click="Button_Xongthemchatthai" RenderTransformOrigin="0.508,0.611"/>
+                        <TextBlock Text="ID cơ sở:" Margin="0,5"/>
+                        <TextBox x:Name="IDTextBox" Margin="0,5" />
+
+                        <TextBlock Text="Tên cơ sở:" Margin="0,5" />
+                        <TextBox x:Name="TenTextBox" Margin="0,5" />
+
+                        <TextBlock Text="Địa chỉ:" Margin="0,5" />
+                        <TextBox x:Name="DiachiTextBox" Margin="0,5" />
+
+                        <TextBlock Text="Lượng chất thải (tấn):" Margin="0,5" />
+                        <TextBox x:Name="LuongchatthaiTextBox" Margin="0,5" />
+
+                        <TextBlock Text="ID Xã:" Margin="0,5" />
+                        <TextBox x:Name="IdXaTextBox" Margin="0,5" />
+                     </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="10" Name="Xoachatthai" Visibility="Collapsed">
+                        <Button Content="Xong" FontWeight="Bold" Background="#5f9ea0" Width="50" Height="30" FontSize="15" HorizontalAlignment="Left" Click="Button_Xongxoachatthai" RenderTransformOrigin="0.5,0.5"/>
+                        <TextBlock Text="ID cơ sở muốn xóa:" Margin="0,5"/>
+                        <TextBox x:Name="IDxoaTextBox" Margin="0,5" />
+                    </StackPanel>
+                    <StackPanel  Orientation="Vertical" Margin="10" Name="Suachatthai" Visibility="Collapsed">
+                        <Button Content="Xong" FontWeight="Bold" Background="#5f9ea0" Width="50" Height="30" FontSize="15" HorizontalAlignment="Left" Click="Button_Xongsuachatthai" RenderTransformOrigin="0.508,0.611"/>
+                        <TextBlock Text="ID cơ sở muốn sửa dữ liệu:" Margin="0,5"/>
+                        <TextBox x:Name="IDsuaTextBox" Margin="0,5" />
+                        <TextBlock Text="Lượng chất thải (tấn) mới:" Margin="0,5" />
+                        <TextBox x:Name="LuongchatthaisuaTextBox" Margin="0,5" />
+                    </StackPanel>
+                    <ListView Name="listViewCosokhaonghiem" Margin="10" Visibility="Collapsed">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="100"/>
+                                <GridViewColumn Header="Tên Cơ sở" DisplayMemberBinding="{Binding Ten}" Width="150"/>
+                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding Diachi}" Width="200"/>
+                                <GridViewColumn Header="Công nghệ xử lý" DisplayMemberBinding="{Binding Congnghexuli}" Width="150"/>
+                                <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding Tinhtrang}" Width="100"/>
+                                <GridViewColumn Header="ID Xã" DisplayMemberBinding="{Binding Idxa}" Width="100"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+            </TabItem>
+
+            <!-- Tab 2.2: Cơ sở chăn nuôi -->
+            <TabItem Header="Cơ sở chăn nuôi" HorizontalAlignment="Left" Margin="-2,-2,0,0" Width="101">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="10">
+                        <Label Content="Chức năng quản lý cơ sở chăn nuôi, chế biến và thị trường" 
+                               FontSize="16" FontWeight="Bold" Foreground="#0288D1" Margin="5"/>
+                        <WrapPanel>
+                            <Button Content=" Quản lý tổ chức, cá nhân chăn nuôi" 
+                                    Background="#FF29B6F6" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_Quanli"/>
+                            <Button Content=" Tra cứu tổ chức, cá nhân chăn nuôi" 
+                                    Background="#FF039BE5" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_Tracuu"/>
+                            <Button Content=" Điều kiện chăn nuôi" 
+                                    Background="#FF0288D1" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_DieuKien"/>
+                            <Button Content=" Giấy chứng nhận cơ sở" 
+                                    Background="#FF0277BD" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_Chungnhan"/>
+                            <Button Content="Tra cứu tổ chức cấp phép" 
+                                    Background="#FF0277BD" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_Tracuutccapphep"/>
+                            <Button Content="Quản lí cơ sở chế biến" 
+                                    Background="#FF0277BD" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_cosochebien"/>
+                            <Button Content="Tra cứu cơ sở chế biến" 
+                                    Background="#FF0277BD" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_tracuucosochebien"/>
+
+                            <!-- Thêm các nút khác tương tự -->
+                        </WrapPanel>
+                        <Grid Name="Searchchannuoi">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Search" Background="AliceBlue" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" Name="SearchBoxchannuoi" TextAlignment="Center" Padding="0,5,0,0" Background="AntiqueWhite" HorizontalAlignment="Left" Width="200" Height="30"/>
+                        </Grid>
+
+                        <ListView Name="listViewCosochannuoi" Margin="10" Visibility="Collapsed">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="100"/>
+                                    <GridViewColumn Header="Tên cơ sở" DisplayMemberBinding="{Binding Ten}" Width="250"/>
+                                    <GridViewColumn Header="Loại hình" DisplayMemberBinding="{Binding Loaihinh}" Width="150"/>
+                                    <GridViewColumn Header="Người đại diện" DisplayMemberBinding="{Binding Nguoidaidien}" Width="200"/>
+                                    <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding Tinhtrang}" Width="150"/>
+                                    <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding Diachi}" Width="250"/>
+                                    <GridViewColumn Header="ID Huyện" DisplayMemberBinding="{Binding IDhuyen}" Width="100"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <ListView Name="listViewDieukienChannuoi" Margin="10" Visibility="Collapsed">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Mã cơ sở chăn nuôi" DisplayMemberBinding="{Binding Idcoso}" Width="120"/>
+                                    <GridViewColumn Header="Diện tích chuồng trại(m²)" DisplayMemberBinding="{Binding dientichchuongtrai}" Width="150"/>
+                                    <GridViewColumn Header="Số lượng khu vực" DisplayMemberBinding="{Binding soluongkhuvuc}" Width="150"/>
+                                    <GridViewColumn Header="Trang thiết bị" DisplayMemberBinding="{Binding trangthietbi}" Width="300"/>
+                                    <GridViewColumn Header="Chất lượng nguồn nước" DisplayMemberBinding="{Binding chatluongnguonnuoc}" Width="200"/>
+                                    <GridViewColumn Header="Loại thức ăn" DisplayMemberBinding="{Binding loaithucan}" Width="150"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <ListView Name="lvGiayChungNhan" Margin="10" Visibility="Collapsed">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID cơ sở chăn nuôi" DisplayMemberBinding="{Binding Idcoso}" Width="110" />
+                                    <GridViewColumn Header="Số Hiệu" DisplayMemberBinding="{Binding sohieu}" Width="100" />
+                                    <GridViewColumn Header="Ngày Cấp" DisplayMemberBinding="{Binding ngaycap}" Width="120" />
+                                    <GridViewColumn Header="Ngày Hết Hạn" DisplayMemberBinding="{Binding ngayhethan}" Width="120" />
+                                    <GridViewColumn Header="Mã Tổ Chức Cấp Phép" DisplayMemberBinding="{Binding matochuccapphep}" Width="150" />
+                                    <GridViewColumn Header="Tình Trạng" DisplayMemberBinding="{Binding tinhtrang}" Width="100" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <ListView Name="ListViewtochuccapphep" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID Tổ Chức" Width="150" DisplayMemberBinding="{Binding IDtochuc}" />
+                                    <GridViewColumn Header="Tên Tổ Chức" Width="250" DisplayMemberBinding="{Binding Tentochuc}" />
+                                    <GridViewColumn Header="Loại Tổ Chức" Width="150" DisplayMemberBinding="{Binding loaitochuc}" />
+                                    <GridViewColumn Header="Lĩnh Vực Chứng Nhận" Width="250" DisplayMemberBinding="{Binding linhvucchungnhan}" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <ListView Name="ListViewcosochebien" Margin="10" ItemsSource="{Binding}" Visibility="Collapsed">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Idcscb}" Width="100" />
+                                    <GridViewColumn Header="Tên cơ sở" DisplayMemberBinding="{Binding Tencscb}" Width="250" />
+                                    <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding diachicscb}" Width="250" />
+                                    <GridViewColumn Header="Nguyên liệu" DisplayMemberBinding="{Binding nguyenlieu}" Width="150" />
+                                    <GridViewColumn Header="Công suất chế biến" DisplayMemberBinding="{Binding congsuatchebien}" Width="160" />
+                                    <GridViewColumn Header="Số lượng nhân viên" DisplayMemberBinding="{Binding soluongnhanvien}" Width="150" />
+                                    <GridViewColumn Header="ID Huyện" DisplayMemberBinding="{Binding mhuyen}" Width="150" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Tab 2.3: CSDL khác -->
+            <TabItem Header="CSDL khác">
+                <StackPanel Margin="10">
+                    <Label Content="Chức năng quản lý các dữ liệu khác về chăn nuôi" 
+                           FontSize="16" FontWeight="Bold" Foreground="#0288D1" Margin="5"/>
+                    <WrapPanel>
+                        <Button Content="Danh mục chi cục thú y" 
+                                Background="#FF29B6F6" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_ChiCucThuY"/>
+                        <Button Content="Tra cứu chi cục thú y" 
+                                Background="#FF039BE5" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_TraCuuChiCucThuY"/>
+                        <Button Content="Danh mục đại lý thuốc thú y" 
+                                Background="#FF0288D1" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_DaiLyThuY"/>
+                        <Button Content="Tra cứu đại lý thuốc thú y" 
+                                Background="#FF0277BD" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_TraCuuDaiLyThuY"/>
+                        <Button Content="Danh mục khu tạm giữ" 
+                                Background="#FF0277BD" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_khutamgiu"/>
+                        <Button Content="Tra cứu khu tạm giữ" 
+                                Background="#FF0277BD" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_TraCuukhutamgiu"/>
+                        <Button Content="Danh mục cơ sở giết mổ" 
+                                Background="#FF0277BD" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_cosogietmo"/>
+                        <Button Content="Tra cứu cơ sở giết mổ" 
+                                Background="#FF0277BD" Foreground="White" Width="200" Height="50" Margin="5" Click="Button_TraCuucosogietmo"/>
+                        <!-- Thêm các nút khác tương tự -->
+                    </WrapPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Search" Background="AliceBlue" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="SearchBoxyte" TextAlignment="Center" Padding="0,5,0,0" Background="AntiqueWhite" HorizontalAlignment="Left" Width="200" Height="30" TextChanged="SearchBoxyte_TextChanged"/>
+                    </Grid>
+
+                    <ListView Name="listviewchicucthuy" Margin="10" Visibility="Collapsed">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID Chi Cục" Width="100" DisplayMemberBinding="{Binding IDchicuc}" />
+                                <GridViewColumn Header="Tên Chi Cục" Width="150" DisplayMemberBinding="{Binding tenchicuc}" />
+                                <GridViewColumn Header="Tên Quản Lý" Width="150" DisplayMemberBinding="{Binding tenquanli}" />
+                                <GridViewColumn Header="Địa Chỉ" Width="270" DisplayMemberBinding="{Binding diachi}" />
+                                <GridViewColumn Header="Số Lượng động vật đang điều trị" Width="220" DisplayMemberBinding="{Binding soluongdongvat}" />
+                                <GridViewColumn Header="ID Huyện" Width="100" DisplayMemberBinding="{Binding Idhuyen}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <ListView x:Name="listViewDaily" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID Đại Lý" DisplayMemberBinding="{Binding Iddaily}" Width="100"/>
+                                <GridViewColumn Header="Tên Đại Lý" DisplayMemberBinding="{Binding tendaily}" Width="200"/>
+                                <GridViewColumn Header="Người Quản Lý" DisplayMemberBinding="{Binding nguoiquanly}" Width="150"/>
+                                <GridViewColumn Header="Liên Hệ" DisplayMemberBinding="{Binding sdt}" Width="100"/>
+                                <GridViewColumn Header="Địa Chỉ" DisplayMemberBinding="{Binding diachi}" Width="300"/>
+                                <GridViewColumn Header="ID Huyện" DisplayMemberBinding="{Binding idhuyen}" Width="100"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <ListView Name="ListViewKhutamgiu" Margin="10" Visibility="Collapsed">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID Khu" DisplayMemberBinding="{Binding Idkhu}" Width="100"/>
+                                <GridViewColumn Header="Tên Khu" DisplayMemberBinding="{Binding Tenkhu}" Width="300"/>
+                                <GridViewColumn Header="Địa Chỉ" DisplayMemberBinding="{Binding diachi}" Width="300"/>
+                                <GridViewColumn Header="Loại Khu" DisplayMemberBinding="{Binding Loaikhu}" Width="100"/>
+                                <GridViewColumn Header="Người Quản Lý" DisplayMemberBinding="{Binding nguoiquanli}" Width="150"/>
+                                <GridViewColumn Header="Diện Tích(m²)" DisplayMemberBinding="{Binding dientich}" Width="100"/>
+                                <GridViewColumn Header="Sức Chứa Động Vật(con)" DisplayMemberBinding="{Binding soluongdongvat}" Width="150"/>
+                                <GridViewColumn Header="Tình Trạng" DisplayMemberBinding="{Binding tinhtrang}" Width="100"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <ListView Name="listViewCoSogietmo" Margin="10" Visibility="Collapsed" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID Cơ Sở" DisplayMemberBinding="{Binding idcoso}" Width="100"/>
+                                <GridViewColumn Header="Tên Cơ Sở" DisplayMemberBinding="{Binding tencoso}" Width="300"/>
+                                <GridViewColumn Header="Người Quản Lý" DisplayMemberBinding="{Binding nguoiquanly}" Width="170"/>
+                                <GridViewColumn Header="Số Điện Thoại" DisplayMemberBinding="{Binding sodienthoai}" Width="200"/>
+                                <GridViewColumn Header="Công Suất(con/ngày)" DisplayMemberBinding="{Binding congsuat}" Width="100"/>
+                                <GridViewColumn Header="Tình Trạng" DisplayMemberBinding="{Binding tinhtrang}" Width="120"/>
+                                <GridViewColumn Header="Mã Cơ Quan Quản Lý" DisplayMemberBinding="{Binding macoquanquanly}" Width="150"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
